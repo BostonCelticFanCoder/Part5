@@ -2,23 +2,23 @@ const { test, expect, beforeEach, describe } = require('@playwright/test')
 const helper = require('./helper.js')
 describe('Note app', () => {
   beforeEach(async ({ page, request }) => {
-    await request.post('http://localhost:3003/api/testing/reset')
-    await request.post('http://localhost:3003/api/users', {
+    await request.post('/api/testing/reset')
+    await request.post('/api/users', {
       data: {
         name: 'Matti Luukkainen',
         username: 'mluukkai',
         password: 'salainen'
       }
     })
-    await request.post('http://localhost:3003/api/users', {
+    await request.post('/api/users', {
         data: {
           name: 'Maksim Yin',
           username: 'maksim',
-          password: 'yini'
+          password: 'yin'
         }
     })
 
-    await page.goto('http://localhost:5173')
+    await page.goto('/')
   })
 
   test('Login form is shown', async ({ page }) => {
